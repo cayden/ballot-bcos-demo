@@ -8,6 +8,9 @@ import org.fisco.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
  */
 
 public interface BallotService {
+
+
+
     public TransactionReceipt vote(int index) throws Exception;
 
 

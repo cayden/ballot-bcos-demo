@@ -28,6 +28,7 @@ public class BallotController {
     public TransactionReceipt vote(int index) {
         TransactionReceipt transactionReceipt = null;
         try {
+            logger.info("index: {}", index);
             transactionReceipt = ballotService.vote(index);
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,6 +42,8 @@ public class BallotController {
         Proposal winningProposal=null;
         try {
             winningProposal= ballotService.getWinningProposal();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

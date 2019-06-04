@@ -29,9 +29,9 @@ public abstract class BaseService {
 
     protected static final ApplicationContext context;
 
-    private static Credentials credentials;
+    public static Credentials credentials;
 
-    private static Web3j web3j;
+    public static Web3j web3j;
 
     static {
         context = new ClassPathXmlApplicationContext("applicationContext.xml");
