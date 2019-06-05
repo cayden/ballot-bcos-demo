@@ -7,10 +7,19 @@ import com.cayden.ballot.contract.Voting;
 import com.cayden.ballot.service.BaseService;
 import com.cayden.ballot.service.VotingService;
 import org.apache.commons.lang3.StringUtils;
+import org.fisco.bcos.web3j.protocol.core.DefaultBlockParameter;
+import org.fisco.bcos.web3j.protocol.core.DefaultBlockParameterName;
+import org.fisco.bcos.web3j.protocol.core.Request;
+import org.fisco.bcos.web3j.protocol.core.methods.request.BcosFilter;
+import org.fisco.bcos.web3j.protocol.core.methods.response.BcosBlock;
+import org.fisco.bcos.web3j.protocol.core.methods.response.BlockNumber;
 import org.fisco.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.fisco.bcos.web3j.tx.gas.StaticGasProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +34,7 @@ import java.util.List;
 @Component
 public class VotingServiceImpl extends BaseService implements VotingService {
 
-    private static final Logger logger = LoggerFactory.getLogger(BallotServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(VotingServiceImpl.class);
 
     private static Voting voting;
 
@@ -89,6 +98,20 @@ public class VotingServiceImpl extends BaseService implements VotingService {
             voteReceipt = voting.totalVotesFor(stringtobyte32(candidateName)).sendAsync().get();
             logger.info("totalVotesFor: {}", voteReceipt);
         }
+
         return voteReceipt;
     }
+
+    @Bean
+    //监听这里才用每次都生成一个新的对象，因为同时监听多个事件不能使用同一个实例
+    @Scope("prototype")
+    public BcosFilter bcosFilter() throws Exception{
+      Request<?,BlockNumber> request=web3j.getBlockNumber();
+      BigInteger fromblock=request.send().getBlockNumber();
+
+      return new BcosFilter(DefaultBlockParameter.valueOf(fromblock),
+              DefaultBlockParameterName.LATEST,voting.getContractAddress());
+
+    }
+
 }
