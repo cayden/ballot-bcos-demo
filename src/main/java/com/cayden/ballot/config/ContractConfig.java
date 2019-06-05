@@ -37,4 +37,7 @@ public class ContractConfig {
     @Value("${ballot.contractaddress}")
     private String ballotAddress;
 
+    @Value("${voting.contractaddress}")
+    private String votingAddress;
+
 }
