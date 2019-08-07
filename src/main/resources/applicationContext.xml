@@ -35,6 +35,7 @@
     id="appConfig">
     <property name="properties">
       <props>
+		<prop key="asset.contractaddress">0x6096966a7c06006385ec0eb774f6dc783a8ee4f0</prop>
 		<prop key="voting.contractaddress">0x5a8ed62caa1ca3f2d3d8765c53b6eb4951bafe5c</prop>
 		<prop key="ballot.contractaddress">0x2149c8e147680535f41304c81ea5d8c5b400180d</prop>
         <prop key="weId.contractaddress">0x1134f67272db4e5f5426c3decbfedbe903957f1a</prop>
