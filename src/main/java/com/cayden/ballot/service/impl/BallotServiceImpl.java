@@ -45,10 +45,10 @@ public class BallotServiceImpl extends BaseService implements BallotService {
     public TransactionReceipt vote(int index) throws Exception {
         TransactionReceipt voteReceipt = null;
         logger.info("ballotAddress: {}，isValid:{}", ballotAddress,ballot.isValid());
-        if (ballot.isValid()) {
+//        if (ballot.isValid()) {
             voteReceipt = ballot.vote(BigInteger.valueOf(index)).sendAsync().get();
             logger.info("voteReceipt: {}", voteReceipt);
-        }
+//        }
         return voteReceipt;
     }
 

@@ -40,4 +40,19 @@ public class ContractConfig {
     @Value("${voting.contractaddress}")
     private String votingAddress;
 
+    public String getBallotAddress() {
+        return ballotAddress;
+    }
+
+    public void setBallotAddress(String ballotAddress) {
+        this.ballotAddress = ballotAddress;
+    }
+
+    public String getVotingAddress() {
+        return votingAddress;
+    }
+
+    public void setVotingAddress(String votingAddress) {
+        this.votingAddress = votingAddress;
+    }
 }

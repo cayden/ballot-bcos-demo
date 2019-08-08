@@ -37,7 +37,7 @@
       <props>
 		<prop key="asset.contractaddress">0x6096966a7c06006385ec0eb774f6dc783a8ee4f0</prop>
 		<prop key="voting.contractaddress">0x5a8ed62caa1ca3f2d3d8765c53b6eb4951bafe5c</prop>
-		<prop key="ballot.contractaddress">0xf1dcb32ac439a17a6e70c13e6094f20e8420b64c</prop>
+		<prop key="ballot.contractaddress">0x166dcc9d7474ab8c2811824955f2859df5a6232f</prop>
         <prop key="weId.contractaddress">0x1134f67272db4e5f5426c3decbfedbe903957f1a</prop>
         <prop key="cpt.contractaddress">0xd96a8ff503fb711370870cca09fd334e3b2ed0e9</prop>
         <prop key="issuer.contractaddress">0xb9bc489b60f4cc4a2d060ac81261a290077694e9</prop>
