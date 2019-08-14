@@ -28,17 +28,11 @@ public class BallotController {
     @Autowired
     private VotingService votingService;
 
-    @PostMapping("/vote")
-    public TransactionReceipt vote(int index) {
-        TransactionReceipt transactionReceipt = null;
-        try {
-            logger.info("index: {}", index);
-            transactionReceipt = ballotService.vote(index);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return transactionReceipt;
-    }
+    /**
+     *
+     * @param list ["A","B","C","D"]
+     * @return 0x8fd88b4d2ac3faa4655ac093e66f8970b110bf9d
+     */
     @PostMapping("/deploy")
     public String deploy(@RequestBody List<String> list){
         logger.info("list: {}", list);
@@ -72,7 +66,17 @@ public class BallotController {
         return BigInteger.valueOf(0);
     }
 
-
+    @PostMapping("/vote")
+    public TransactionReceipt vote(int index) {
+        TransactionReceipt transactionReceipt = null;
+        try {
+            logger.info("index: {}", index);
+            transactionReceipt = ballotService.vote(index);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return transactionReceipt;
+    }
 
     @GetMapping("/winner")
     public Proposal getWinningProposal() {
